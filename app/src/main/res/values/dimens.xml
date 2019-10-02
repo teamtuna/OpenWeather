@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="app_bar_height">240dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="text_h1">21dp</dimen>
+    <dimen name="text_h2">18dp</dimen>
+    <dimen name="text_h3">15dp</dimen>
+    <dimen name="text_h4">12dp</dimen>
+    <dimen name="height_hourly_item">120dp</dimen>
+</resources>

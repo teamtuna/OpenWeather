@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutCurrentWeather"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/imageIcon"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
+
+    <TextView
+        android:id="@+id/textCurrentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="@dimen/text_h2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageIcon"
+        tools:text="1:10 pm" />
+
+    <TextView
+        android:id="@+id/textCurrentTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="72dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageIcon"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imageIcon"
+        tools:text="63°" />
+
+    <TextView
+        android:id="@+id/textHighTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/box_h"
+        android:padding="2dp"
+        android:textSize="@dimen/text_h2"
+        app:layout_constraintBottom_toBottomOf="@id/textCurrentTime"
+        app:layout_constraintRight_toLeftOf="@id/textLowTemp"
+        tools:text="H:63" />
+
+    <TextView
+        android:id="@+id/textLowTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/box_l"
+        android:padding="2dp"
+        android:textSize="@dimen/text_h2"
+        app:layout_constraintBottom_toBottomOf="@id/textCurrentTime"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="L:63" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
