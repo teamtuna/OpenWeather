@@ -12,5 +12,3 @@ OpenWeatherMap API를 이용해서 특정지역(판교 알파돔) 주변 20군�
 ![list](./screenshot/screen0.png)
 ![detail1](./screenshot/screen1.png)
 ![detail2](./screenshot/screen2.png)
-# OpenWeather
-# OpenWeather
