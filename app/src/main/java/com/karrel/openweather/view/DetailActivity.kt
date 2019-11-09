@@ -54,7 +54,6 @@ class DetailActivity : BaseActivity() {
 
     private fun loadDatas() {
         currentViewModel.loadCurrentCityData(cityId)
-        forecastViewModel.loadHourlyForecastData(cityId)
         forecastViewModel.load3HourlyForecastData(cityId)
     }
 
