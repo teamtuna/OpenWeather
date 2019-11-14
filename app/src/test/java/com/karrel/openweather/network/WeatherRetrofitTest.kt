@@ -23,8 +23,12 @@ class WeatherRetrofitTest {
         val response = WeatherRetrofit.hourlyForecast(seoulCityId).execute()
 
         val data = response.body()
-        println("error body : ${response.message()}")
-        println("data : $data")
+
+        if (response.isSuccessful) {
+            println("data : $data")
+        } else {
+            println("error body : ${response.message()}")
+        }
 
         assert(response.isSuccessful)
     }
