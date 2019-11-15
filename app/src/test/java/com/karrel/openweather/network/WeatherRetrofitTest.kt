@@ -24,7 +24,11 @@ class WeatherRetrofitTest {
 
         val data = response.body()
 
-        println("data : $data")
+        if (response.isSuccessful) {
+            println("data : $data")
+        } else {
+            println("error body : ${response.message()}")
+        }
 
         assert(response.isSuccessful)
     }
