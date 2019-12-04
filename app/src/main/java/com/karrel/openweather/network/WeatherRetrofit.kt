@@ -1,17 +1,26 @@
 package com.karrel.openweather.network
 
+import com.karrel.openweather.base.BaseApplication
 import com.karrel.openweather.constant.BASE_URL
 import com.karrel.openweather.model.Forecast5day3hourData
 import com.karrel.openweather.model.HourlyForecastData
 import com.karrel.openweather.model.weather.CurrentWeather
+import com.readystatesoftware.chuck.ChuckInterceptor
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object WeatherRetrofit : WeatherApi {
+
+    private val client = OkHttpClient.Builder()
+        .addInterceptor(ChuckInterceptor(BaseApplication.instance.context()))
+        .build()
+
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
+        .client(client)
         .build()
 
     private val service: WeatherApi = retrofit.create(WeatherApi::class.java)
