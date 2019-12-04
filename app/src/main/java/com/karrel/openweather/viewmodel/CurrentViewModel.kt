@@ -1,14 +1,16 @@
 package com.karrel.openweather.viewmodel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
 import com.karrel.openweather.base.BaseViewModel
+import com.karrel.openweather.constant.LOCATION_ALPHADOM
 import com.karrel.openweather.extension.KtoC
 import com.karrel.openweather.extension.toAmPm
 import com.karrel.openweather.extension.toLottieIcon
-import com.karrel.openweather.model.weather.CurrentWeather
-import com.karrel.openweather.repository.WeatherRepository
+import com.karrel.openweather.network.googlemapImageUrl
+import team.tuna.openweather.model.FindCurrentWeatherData
+import team.tuna.openweather.model.weather.CurrentWeather
+import team.tuna.openweather.repository.WeatherRepository
 
 /**
  * 현재 날씨 정보에대한 뷰모델
@@ -16,9 +18,10 @@ import com.karrel.openweather.repository.WeatherRepository
 class CurrentViewModel : BaseViewModel() {
     private val weatherRepo = WeatherRepository
 
-    val currentList: LiveData<List<CurrentWeather>> = Transformations.map(weatherRepo.currentWeatherData) { data ->
-        data.list
-    }
+    val currentList: LiveData<List<CurrentWeather>> =
+        Transformations.map(weatherRepo.currentWeatherData) { data ->
+            data.list
+        }
 
     val lottieIcon: LiveData<String> = Transformations.map(weatherRepo.currentCityData) {
         it.weather[0].icon.toLottieIcon()
@@ -41,7 +44,7 @@ class CurrentViewModel : BaseViewModel() {
 
     fun loadWeatherListData() {
         showProgress()
-        weatherRepo.loadWeatherListData({
+        weatherRepo.loadWeatherListData(LOCATION_ALPHADOM.first, LOCATION_ALPHADOM.second, {
             hideProgress()
         }, {
             hideProgress()
@@ -68,7 +71,18 @@ class CurrentViewModel : BaseViewModel() {
     }
 
     fun getGooglemapImageUrl(cityId: Int, size: Pair<Int, Int>): String? {
-        return weatherRepo.getGoogleImageUrl(cityId, size)
+        val currentWeatherData = weatherRepo.getCurrentWeatherData()
+        currentWeatherData?.list?.let {
+            for (item in it) {
+                if (item.id == cityId) {
+                    return googlemapImageUrl(
+                        lat = item.coord.lat,
+                        lon = item.coord.lon,
+                        size = size
+                    )
+                }
+            }
+        }
+        return null
     }
-
 }

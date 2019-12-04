@@ -9,8 +9,8 @@ import com.karrel.openweather.constant.LOCATION_ALPHADOM
 fun googlemapImageUrl(
     zoom: Int = 13,
     size: Pair<Int, Int> = Pair(300, 300),
-    lat: Double = LOCATION_ALPHADOM.first,
-    lon: Double = LOCATION_ALPHADOM.second,
+    lat: Double,
+    lon: Double,
     key: String = GOOGLE_MAP_KEY
 ): String {
     val baseUrl = "https://maps.googleapis.com/maps/api/staticmap?"

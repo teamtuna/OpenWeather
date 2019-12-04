@@ -49,8 +49,4 @@ dependencies {
         transitive = true
     }
     implementation 'androidx.core:core-ktx:1.1.0'
-
-    // chuck
-    debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
-    releaseImplementation 'com.readystatesoftware.chuck:library-no-op:1.1.0' // no-op (no operation)
 }

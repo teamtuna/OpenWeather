@@ -1,15 +1,14 @@
-package com.karrel.openweather.repository
+package team.tuna.openweather.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.karrel.openweather.model.FindCurrentWeatherData
-import com.karrel.openweather.model.Forecast5day3hourData
-import com.karrel.openweather.model.HourlyForecastData
-import com.karrel.openweather.model.weather.CurrentWeather
-import com.karrel.openweather.network.WeatherRetrofit
-import com.karrel.openweather.network.googlemapImageUrl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import team.tuna.openweather.model.FindCurrentWeatherData
+import team.tuna.openweather.model.Forecast5day3hourData
+import team.tuna.openweather.model.HourlyForecastData
+import team.tuna.openweather.model.weather.CurrentWeather
+import team.tuna.openweather.network.WeatherRetrofit
 
 object WeatherRepository : WeatherDataSource {
     val currentWeatherData: MutableLiveData<FindCurrentWeatherData> by lazy {
@@ -40,7 +39,10 @@ object WeatherRepository : WeatherDataSource {
                 onFailure(t)
             }
 
-            override fun onResponse(call: Call<HourlyForecastData>, response: Response<HourlyForecastData>) {
+            override fun onResponse(
+                call: Call<HourlyForecastData>,
+                response: Response<HourlyForecastData>
+            ) {
                 onSuccess()
                 hourlyForecastData.postValue(response.body())
             }
@@ -49,17 +51,22 @@ object WeatherRepository : WeatherDataSource {
     }
 
     override fun loadWeatherListData(
+        lat: Double,
+        lon: Double,
         onSuccess: () -> Unit,
         onFailure: (t: Throwable) -> Unit
     ) {
 
-        WeatherRetrofit.findCurrentWeatherData().enqueue(object :
+        WeatherRetrofit.findCurrentWeatherData(lat, lon).enqueue(object :
             Callback<FindCurrentWeatherData> {
             override fun onFailure(call: Call<FindCurrentWeatherData>, t: Throwable) {
                 onFailure(t)
             }
 
-            override fun onResponse(call: Call<FindCurrentWeatherData>, response: Response<FindCurrentWeatherData>) {
+            override fun onResponse(
+                call: Call<FindCurrentWeatherData>,
+                response: Response<FindCurrentWeatherData>
+            ) {
                 onSuccess()
                 currentWeatherData.postValue(response.body())
                 println("currentWeatherData : $currentWeatherData")
@@ -79,7 +86,10 @@ object WeatherRepository : WeatherDataSource {
                 onFailure(t)
             }
 
-            override fun onResponse(call: Call<CurrentWeather>, response: Response<CurrentWeather>) {
+            override fun onResponse(
+                call: Call<CurrentWeather>,
+                response: Response<CurrentWeather>
+            ) {
                 onSuccess()
                 currentCityData.postValue(response.body())
             }
@@ -87,13 +97,20 @@ object WeatherRepository : WeatherDataSource {
         })
     }
 
-    override fun load3HourlyForecastData(cityId: Int, onSuccess: () -> Unit, onFailure: (t: Throwable) -> Unit) {
+    override fun load3HourlyForecastData(
+        cityId: Int,
+        onSuccess: () -> Unit,
+        onFailure: (t: Throwable) -> Unit
+    ) {
         WeatherRetrofit.forecast5day3hour(cityId).enqueue(object : Callback<Forecast5day3hourData> {
             override fun onFailure(call: Call<Forecast5day3hourData>, t: Throwable) {
                 onFailure(t)
             }
 
-            override fun onResponse(call: Call<Forecast5day3hourData>, response: Response<Forecast5day3hourData>) {
+            override fun onResponse(
+                call: Call<Forecast5day3hourData>,
+                response: Response<Forecast5day3hourData>
+            ) {
                 onSuccess()
                 forecast3HourlyData.postValue(response.body())
             }
@@ -101,15 +118,7 @@ object WeatherRepository : WeatherDataSource {
         })
     }
 
-    override fun getGoogleImageUrl(cityId: Int, size: Pair<Int, Int>): String? {
-        currentWeatherData.value?.list?.let {
-            for (item in it) {
-                if (item.id == cityId) {
-                    return googlemapImageUrl(lat = item.coord.lat, lon = item.coord.lon, size = size)
-                }
-            }
-        }
-        return null
-    }
+
+    override fun getCurrentWeatherData() = currentWeatherData.value
 
 }

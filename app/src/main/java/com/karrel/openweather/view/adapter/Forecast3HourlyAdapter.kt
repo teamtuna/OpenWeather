@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.karrel.openweather.R
-import com.karrel.openweather.model.weather.CurrentWeather
+import team.tuna.openweather.model.weather.CurrentWeather
 import com.karrel.openweather.extension.KtoC
 import com.karrel.openweather.extension.toEkkmm
 import com.karrel.openweather.extension.toWeatherIcon

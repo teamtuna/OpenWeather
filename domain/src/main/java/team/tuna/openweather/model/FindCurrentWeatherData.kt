@@ -1,6 +1,6 @@
-package com.karrel.openweather.model
+package team.tuna.openweather.model
 
-import com.karrel.openweather.model.weather.CurrentWeather
+import team.tuna.openweather.model.weather.CurrentWeather
 
 /**
  * 특정 위치 (위도,경도)를 기반한 그 주변 도시에 대한 날씨 정보 데이터

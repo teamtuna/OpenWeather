@@ -1,13 +1,10 @@
 package com.karrel.openweather.viewmodel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
 import com.karrel.openweather.base.BaseViewModel
-import com.karrel.openweather.model.Forecast5day3hourData
-import com.karrel.openweather.model.HourlyForecastData
-import com.karrel.openweather.model.weather.CurrentWeather
-import com.karrel.openweather.repository.WeatherRepository
+import team.tuna.openweather.model.weather.CurrentWeather
+import team.tuna.openweather.repository.WeatherRepository
 
 /**
  * Created by Rell on 2019. 4. 19..

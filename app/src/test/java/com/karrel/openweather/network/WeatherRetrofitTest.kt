@@ -1,6 +1,7 @@
 package com.karrel.openweather.network
 
 import org.junit.Test
+import team.tuna.openweather.network.WeatherRetrofit
 
 class WeatherRetrofitTest {
 
@@ -46,8 +47,9 @@ class WeatherRetrofitTest {
 
     @Test
     fun testFindCurrentWeatherSuccess() {
-
-        val response = WeatherRetrofit.findCurrentWeatherData().execute()
+        // 알파돔 좌표
+        val LOCATION_ALPHADOM = Pair(37.394986, 127.109018)
+        val response = WeatherRetrofit.findCurrentWeatherData(LOCATION_ALPHADOM.first, LOCATION_ALPHADOM.second).execute()
 
         val data = response.body()
 

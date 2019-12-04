@@ -11,7 +11,7 @@ import com.karrel.openweather.extension.KtoC
 import com.karrel.openweather.extension.alphaAnim
 import com.karrel.openweather.extension.loadImage
 import com.karrel.openweather.extension.toWeatherIcon
-import com.karrel.openweather.model.weather.CurrentWeather
+import team.tuna.openweather.model.weather.CurrentWeather
 import com.karrel.openweather.network.googlemapImageUrl
 import kotlinx.android.synthetic.main.item_current_weather.view.*
 
