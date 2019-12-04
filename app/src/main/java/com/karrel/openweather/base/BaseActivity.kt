@@ -11,6 +11,7 @@ import com.karrel.openweather.extension.plusAssign
 import io.fabric.sdk.android.Fabric
 import io.reactivex.android.schedulers.AndroidSchedulers
 import karrel.com.mvvmsample.extensions.AutoClearedDisposable
+import team.tuna.openweather.Test
 
 
 /**
