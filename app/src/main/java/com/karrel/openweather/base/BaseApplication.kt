@@ -2,6 +2,7 @@ package com.karrel.openweather.base
 
 import android.app.Application
 import android.content.Context
+import team.tuna.openweather.constant.appContext
 
 class BaseApplication : Application() {
 
@@ -14,6 +15,7 @@ class BaseApplication : Application() {
         super.onCreate()
 
         instance = this
+        appContext = applicationContext
     }
 
     fun context(): Context = applicationContext

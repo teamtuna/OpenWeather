@@ -1,5 +1,5 @@
 
-package com.karrel.openweather.model.weather;
+package team.tuna.openweather.model.weather;
 
 public class Main {
 

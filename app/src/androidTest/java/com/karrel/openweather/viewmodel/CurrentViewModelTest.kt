@@ -5,9 +5,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.Observer
-import com.karrel.openweather.model.FindCurrentWeatherData
-import com.karrel.openweather.model.weather.CurrentWeather
-import org.junit.After
+import team.tuna.openweather.model.weather.CurrentWeather
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

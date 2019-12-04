@@ -1,7 +1,7 @@
-package com.karrel.openweather.model
+package team.tuna.openweather.model
 
-import com.karrel.openweather.model.weather.City
-import com.karrel.openweather.model.weather.CurrentWeather
+import team.tuna.openweather.model.weather.City
+import team.tuna.openweather.model.weather.CurrentWeather
 
 class Forecast5day3hourData {
 
