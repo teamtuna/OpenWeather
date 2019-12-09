@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "516160825280",
+    "firebase_url": "https://openweather-35baf.firebaseio.com",
+    "project_id": "openweather-35baf",
+    "storage_bucket": "openweather-35baf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516160825280:android:dd29321e3cd85ab4ccca25",
+        "android_client_info": {
+          "package_name": "com.karrel.openweather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516160825280-bn6fvv8aa6vuj5mjifvnej6s8r03ci3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTl-FMjBaX7Nw7Eok0jkWuu7DxjW_X5SY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516160825280-bn6fvv8aa6vuj5mjifvnej6s8r03ci3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
