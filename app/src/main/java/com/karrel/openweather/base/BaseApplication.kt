@@ -16,7 +16,7 @@ class BaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-//        Fabric.with(this, Crashlytics())
+        Fabric.with(this, Crashlytics())
         Crashlytics.log("시작됨")
 
         instance = this

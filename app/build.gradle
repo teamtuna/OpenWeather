@@ -24,7 +24,22 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
-
+    signingConfigs {
+        sign {
+            keyAlias 'openweather'
+            keyPassword 'tuna1234'
+            storeFile file('../release/release.jks')
+            storePassword 'tuna1234'
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.sign
+        }
+        debug {
+            signingConfig signingConfigs.sign
+        }
+    }
 }
 
 dependencies {
