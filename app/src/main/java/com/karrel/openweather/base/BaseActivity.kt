@@ -23,6 +23,7 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Crashlytics.log(android.util.Log.DEBUG, "onCreate", javaClass.simpleName)
         lifecycle.addObserver(disposables)
         Fabric.with(this, Crashlytics())
         observeProgress()
