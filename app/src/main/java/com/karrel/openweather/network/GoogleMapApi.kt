@@ -1,7 +1,6 @@
 package com.karrel.openweather.network
 
 import com.karrel.openweather.constant.GOOGLE_MAP_KEY
-import com.karrel.openweather.constant.LOCATION_ALPHADOM
 
 
 //https://maps.googleapis.com/maps/api/staticmap?center=Dongjinwon&zoom=13&size=600x300&maptype=roadmap&markers=color:red%7Clabel:C%7C37.394986,127.109018&key=AIzaSyDP9laAKtbDd22DM9eq9NBum9wWzt-90es

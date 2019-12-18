@@ -1,2 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="team.tuna.openweather" />
+        package="team.tuna.openweather">
+</manifest>
