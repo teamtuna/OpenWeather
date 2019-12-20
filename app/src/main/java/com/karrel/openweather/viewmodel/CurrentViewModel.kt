@@ -1,6 +1,5 @@
 package com.karrel.openweather.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.karrel.openweather.base.BaseViewModel
@@ -45,15 +44,11 @@ class CurrentViewModel : BaseViewModel() {
         it.main.temp_min.KtoC()
     }
 
-    fun loadLocation(context: Context) {
-        locationRepo.loadCurrentLocation(context)
-    }
-
     fun loadWeatherListData() {
         showProgress()
 
         disposableLocation?.dispose()
-        disposableLocation = locationRepo.getCurrentLocation()
+        disposableLocation = locationRepo.getLocation()
             .subscribe({ location ->
                 weatherRepo.loadWeatherListData(location.latitude, location.longitude, {
                     hideProgress()

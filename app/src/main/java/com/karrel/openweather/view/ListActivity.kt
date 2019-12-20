@@ -42,19 +42,18 @@ class ListActivity : BaseActivity() {
         startIntro()
         setupSwipeRefresh()
 
-        loadLocation()
     }
 
     override fun onStart() {
         super.onStart()
 
-        viewModel.loadWeatherListData()
+        loadWeatherList()
     }
 
-    private fun loadLocation() {
+    private fun loadWeatherList() {
         if (!hasLocationPermission()) return
 
-        viewModel.loadLocation(this)
+        viewModel.loadWeatherListData()
     }
 
     private fun hasLocationPermission(): Boolean {
@@ -96,7 +95,7 @@ class ListActivity : BaseActivity() {
         )
 
         swiperRefresh.setOnRefreshListener {
-            viewModel.loadWeatherListData()
+            loadWeatherList()
         }
     }
 
@@ -130,7 +129,7 @@ class ListActivity : BaseActivity() {
 
     private fun onResultLocationPermission(resultCode: Int) {
         if (resultCode == Activity.RESULT_OK) {
-            loadLocation()
+            loadWeatherList()
         } else {
             // 권한이 없으면 앱을 사용할 수 없습니다.
             Toast.makeText(this, R.string.cannout_use_app_without_permission, Toast.LENGTH_LONG).show()
