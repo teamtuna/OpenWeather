@@ -3,13 +3,13 @@ package com.karrel.openweather.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.karrel.openweather.base.BaseViewModel
-import com.karrel.openweather.constant.LOCATION_ALPHADOM
 import com.karrel.openweather.extension.KtoC
 import com.karrel.openweather.extension.toAmPm
 import com.karrel.openweather.extension.toLottieIcon
 import com.karrel.openweather.network.googlemapImageUrl
-import team.tuna.openweather.model.FindCurrentWeatherData
+import io.reactivex.disposables.Disposable
 import team.tuna.openweather.model.weather.CurrentWeather
+import team.tuna.openweather.repository.LocationRepository
 import team.tuna.openweather.repository.WeatherRepository
 
 /**
@@ -17,6 +17,9 @@ import team.tuna.openweather.repository.WeatherRepository
  */
 class CurrentViewModel : BaseViewModel() {
     private val weatherRepo = WeatherRepository
+    private val locationRepo = LocationRepository
+
+    private var disposableLocation :Disposable? = null
 
     val currentList: LiveData<List<CurrentWeather>> =
         Transformations.map(weatherRepo.currentWeatherData) { data ->
@@ -41,15 +44,21 @@ class CurrentViewModel : BaseViewModel() {
         it.main.temp_min.KtoC()
     }
 
-
     fun loadWeatherListData() {
         showProgress()
-        weatherRepo.loadWeatherListData(LOCATION_ALPHADOM.first, LOCATION_ALPHADOM.second, {
-            hideProgress()
-        }, {
-            hideProgress()
-            throwMessage(it)
-        })
+
+        disposableLocation?.dispose()
+        disposableLocation = locationRepo.getLocation()
+            .subscribe({ location ->
+                weatherRepo.loadWeatherListData(location.latitude, location.longitude, {
+                    hideProgress()
+                }, {
+                    hideProgress()
+                    throwMessage(it)
+                })
+            }, {
+                it.printStackTrace()
+            })
     }
 
     fun loadCurrentCityData(cityId: Int) {
@@ -84,5 +93,11 @@ class CurrentViewModel : BaseViewModel() {
             }
         }
         return null
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+
+        disposableLocation?.dispose()
     }
 }

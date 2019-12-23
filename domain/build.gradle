@@ -39,4 +39,7 @@ dependencies {
     // chuck
     debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
     releaseImplementation 'com.readystatesoftware.chuck:library-no-op:1.1.0' // no-op (no operation)
+
+    // rx
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_version"
 }
